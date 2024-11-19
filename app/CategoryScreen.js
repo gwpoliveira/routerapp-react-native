@@ -10,15 +10,17 @@ export default CategoryScreen = () => {
         <Text style={styles.headerTitle}>Cidades</Text>
       </View>
 
-      <Text style={styles.title}>Escolha seu Destino!! </Text>
+      <Text style={styles.title}>Escolha seu Destino!</Text>
 
-      { destinations.map(destinations =>(
-      <TouchableOpacity
-        style={styles.touchableOpacity}
-        onPress={() => {router.push("/HomeScreen")}}>
-        <Text style={styles.buttonText}>{destinations}</Text>
-      </TouchableOpacity>
-      )) }
+      {destinations.map((destination, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.touchableOpacity}
+          onPress={() => { router.push("/HomeScreen") }}
+        >
+          <Text style={styles.buttonText}>{destination}</Text>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
@@ -26,37 +28,56 @@ export default CategoryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#1E1E24", // Fundo escuro moderno
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20, // Espaço nas laterais para alinhar o conteúdo
   },
   header: {
     width: "100%",
-    padding: 20,
-    backgroundColor: "#2C3E50",
+    paddingVertical: 15,
+    backgroundColor: "#3A3D46", // Header neutro e elegante
     alignItems: "center",
-    marginBottom: 20,
+    justifyContent: "center",
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    position: "absolute", // Fixando o header no topo
+    top: 0,
+    zIndex: 1,
   },
   headerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#E0E0E0", // Cor clara sem ser puro branco
+    fontFamily: "Roboto",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: "5%",
-    marginTop: "15%",
-    color: "#2C3E50",
+    fontSize: 26,
+    fontWeight: "600",
+    color: "#F5F5F5", // Texto claro para contrastar com o fundo escuro
+    marginBottom: 30,
+    marginTop: 80, // Espaço para evitar sobreposição com o header
+    fontFamily: "Roboto",
+    textAlign: "center",
   },
   touchableOpacity: {
-    backgroundColor: "#7F8C8D",
-    padding: 20,
+    backgroundColor: "#4CAF50", // Verde moderno e suave
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     alignItems: "center",
-    borderRadius: 20,
-    marginTop: 40,
-    width: "50%",
+    borderRadius: 25, // Botões arredondados
+    marginTop: 20,
+    width: "80%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5, // Leve elevação para profundidade
   },
   buttonText: {
-    color: "#ffffff",
-    fontSize: 16,
+    color: "#FFFFFF", // Branco para bom contraste
+    fontSize: 18,
+    fontWeight: "600",
+    fontFamily: "Roboto",
   },
 });
